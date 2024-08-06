@@ -33,6 +33,7 @@ payload()
   uint8_t Gran64_2, Gran64;
 
   data = val_pe_reg_read(ID_AA64MMFR0_EL1);
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64MMFR0_EL1 = %llx", data, index);
 
   /* TGran4_2: Stage 2 4KB Granularity support, bits [43:40] */
   Gran4_2 = VAL_EXTRACT_BITS(data, 40, 43);

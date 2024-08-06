@@ -31,6 +31,10 @@ payload()
 
   data = val_pe_reg_read(ID_AA64PFR0_EL1);
 
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64PFR0_EL1.EL3 = %llx",
+                                            VAL_EXTRACT_BITS(data, 12, 15), index);
+
+
   if (data & 0xF000) //bits 15:12 for EL3 support
 	val_set_status(index, RESULT_PASS(TEST_NUM, 1));
   else

@@ -31,6 +31,10 @@ payload()
   data = val_pe_reg_read(ID_AA64PFR0_EL1);
   data = (data & 0xF00000) >> 20;
 
+  /* The AdvSMID and FP bits value is same */
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64PFR0_EL1.AdvSIMD = %llx", data, index);
+
+
   if ((data == 0x0) || (data == 0x1))
         val_set_status(index, RESULT_PASS(TEST_NUM, 1));
   else

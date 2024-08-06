@@ -31,6 +31,12 @@ payload()
 
   data = val_pe_reg_read(ID_AA64PFR0_EL1);
 
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64PFR0_EL1.EL0  = %llx",
+                                            VAL_EXTRACT_BITS(data, 0, 3), index);
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64PFR0_EL1.EL1  = %llx",
+                                            VAL_EXTRACT_BITS(data, 4, 7), index);
+
+
   if ((data & 0x3) && (data & 0x30)) //bits 1:0 and 5:4 must not be zero
         val_set_status(index, RESULT_PASS(TEST_NUM, 1));
   else

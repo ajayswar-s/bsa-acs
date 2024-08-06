@@ -31,6 +31,9 @@ payload()
 
   data = val_pe_reg_read(ID_AA64ISAR0_EL1);
 
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64ISAR0_EL1.CRC32 = %llx",
+                                             VAL_EXTRACT_BITS(data, 16, 19), index);
+
   if ((data >> 16) & 0xF) //bits 19:16 are CRC32 and must not be zero
         val_set_status(index, RESULT_PASS(TEST_NUM, 1));
   else

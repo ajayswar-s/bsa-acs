@@ -28,21 +28,21 @@ payload()
 {
   uint64_t data = 0;
   uint32_t index = val_pe_get_index_mpid(val_pe_get_mpid());
-  uint32_t primary_pe_idx = val_pe_get_primary_index();
 
   /* Check ID_AA64DFR0_EL1[11:8] for PMUver */
   data = VAL_EXTRACT_BITS(val_pe_reg_read(ID_AA64DFR0_EL1), 8, 11);
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64DFR0_EL1.PMUVer = %llx", data, index);
+
 
   if ((data != 0x0) && (data != 0xF)) {
       /* PMCR_EL0 Bits 15:11 for Number of counters. */
       data = VAL_EXTRACT_BITS(val_pe_reg_read(PMCR_EL0), 11, 15);
+      val_print_primary_pe(ACS_PRINT_DEBUG, "\n       PMCR_EL0.N = %llx", data, index);
       if (data > 1)
           val_set_status(index, RESULT_PASS(TEST_NUM, 1));
       else {
-          if (index == primary_pe_idx) {
-              val_print(ACS_PRINT_ERR,
-              "\n       Number of PMU counters reported: %d, expected > 1", data);
-          }
+          val_print_primary_pe(ACS_PRINT_ERR,
+              "\n       Number of PMU counters reported: %d, expected > 1", data, index);
           val_set_status(index, RESULT_FAIL(TEST_NUM, 1));
       }
   } else {

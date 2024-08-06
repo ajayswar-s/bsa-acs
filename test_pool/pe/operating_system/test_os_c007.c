@@ -36,6 +36,12 @@ payload()
       data = val_pe_reg_read(SCTLR_EL1);
   }
 
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       CurrentEL = %llx",
+                                   val_pe_reg_read(CurrentEL), index);
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       CurrentEL SCTLR.EE = %llx",
+                                  VAL_EXTRACT_BITS(data, 25, 25), index);
+
+
   if (((data >> 25) & 1) == 0) //Bit 25 must be 0
       val_set_status(index, RESULT_PASS(TEST_NUM, 2));
   else

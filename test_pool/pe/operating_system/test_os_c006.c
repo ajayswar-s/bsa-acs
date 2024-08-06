@@ -38,6 +38,13 @@ payload()
 
   data = val_pe_reg_read(ID_AA64ISAR0_EL1);
 
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64ISAR0_EL1.AES = %llx",
+                                            VAL_EXTRACT_BITS(data, 4, 7), index);
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64ISAR0_EL1.SHA1 = %llx",
+                                            VAL_EXTRACT_BITS(data, 8, 11), index);
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64ISAR0_EL1.SHA2 = %llx",
+                                            VAL_EXTRACT_BITS(data, 12, 15), index);
+
   //bits 7:4, 11:8, 15:12 must be non-zero
   if (((data >> 4) & 0xF) && ((data >> 8) & 0xF) && ((data >> 12) & 0xF))
         val_set_status(index, RESULT_PASS(TEST_NUM, 1));

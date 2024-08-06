@@ -30,6 +30,9 @@ payload()
   uint32_t index = val_pe_get_index_mpid(val_pe_get_mpid());
 
   data = val_pe_reg_read(ID_AA64MMFR0_EL1);
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64MMFR0_EL1.TGran4_2 = %llx",
+                                            VAL_EXTRACT_BITS(data, 40, 43), index);
+
 
   /* PEs must support 4kb granule for Stage 2.
    * Check For TGran4_2[43:40] != 1 ( 1: 4KB granule size not supported at stage 2.)

@@ -43,16 +43,13 @@ void
 payload()
 {
     uint32_t index = val_pe_get_index_mpid(val_pe_get_mpid());
-    uint32_t primary_pe_idx = val_pe_get_primary_index();
 
     /* Read ID_AA64ISAR1_EL1 and ID_AA64ISAR2_EL1 for PAuth support */
     uint64_t data1 = val_pe_reg_read(ID_AA64ISAR1_EL1);
     uint64_t data2 = val_pe_reg_read(ID_AA64ISAR2_EL1);
 
-    if (index == primary_pe_idx) {
-        val_print(ACS_PRINT_DEBUG, "\n       ID_AA64ISAR1_EL1 = %llx", data1);
-        val_print(ACS_PRINT_DEBUG, "\n       ID_AA64ISAR2_EL1 = %llx", data2);
-    }
+    val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64ISAR1_EL1 = %llx", data1, index);
+    val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64ISAR2_EL1 = %llx", data2, index);
      /* PAuth is optional, For PAuth authentication support atleast one of generic or address
       * authentication of any one of the standard algorithm is needed
       *

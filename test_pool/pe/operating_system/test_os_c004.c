@@ -32,6 +32,8 @@ payload()
 
   data = val_pe_reg_read(ID_AA64MMFR0_EL1);
   tgran4 = VAL_EXTRACT_BITS(data, 28, 31);
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64MMFR0_EL1.TGran4 = %llx", tgran4, index);
+
 
   /* PEs must support 4kb granule for Stage 1.
    * As per the ArmArm I.a value of TGran4[31:28]

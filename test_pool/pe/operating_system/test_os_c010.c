@@ -84,15 +84,19 @@ payload()
 
   /* Check ID_AA64DFR0_EL1[11:8] for PMUver */
   data = VAL_EXTRACT_BITS(val_pe_reg_read(ID_AA64DFR0_EL1), 8, 11);
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       ID_AA64DFR0_EL1.PMUVer = %llx", data, index);
   if ((data == 0x0) || (data == 0xF)) {
       /* PMUver not implemented, Skipping. */
+      val_print(ACS_PRINT_ERR, "\n       PMUVer not Implemented ", 0);
       val_set_status(index, RESULT_SKIP(TEST_NUM, 1));
       return;
   }
 
   int_id = val_pe_get_pmu_gsiv(index);
+  val_print_primary_pe(ACS_PRINT_DEBUG, "\n       PMU Interrupt ID = %llx", int_id, index);
   if (int_id == 0) {
       /* PMU interrupt number not updated */
+      val_print(ACS_PRINT_ERR, "\n       PMU interupt number not updated ", 0);
       val_set_status(index, RESULT_SKIP(TEST_NUM, 2));
       return;
   }
