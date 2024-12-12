@@ -186,8 +186,79 @@ typedef enum {
   TRCIDR4,
   TRCIDR5,
   HCR_EL2,
-  VTCR_EL2
+  VTCR_EL2,
+  ID_AA64AFR0_EL1,
+  ID_AA64AFR1_EL1,
+  ID_AA64DFR2_EL1,
+  ID_AA64FPFR0_EL1,
+  ID_AA64ISAR3_EL1,
+  ID_AA64MMFR3_EL1,
+  ID_AA64MMFR4_EL1,
+  ID_AA64PFR2_EL1,
+  AIDR_EL1,
+  DCZID_EL0,
+  REVIDR_EL1,
+  ID_AA64SMFR0_EL1,
+  CPTR_EL2,
+  SMIDR_EL1,
+  AMCG1IDR_EL0,
+  GMID_EL1,
+  MPAMIDR_EL1,
+  SPMIIDR_EL1,
+  MECIDR_EL2,
+  VMECID_A_EL2,
+  VMECID_P_EL2,
+  TRCDEVID,
+  TRCTRACEIDR,
+  TRCIDR1,
+  TRCIDR2,
+  TRCIDR3,
+  TRCIDR6,
+  TRCIDR7,
+  TRCIDR8,
+  TRCIDR9,
+  TRCIDR10,
+  TRCIDR11,
+  TRCIDR12,
+  TRCIDR13,
+  ID_AFR0_EL1,
+  ID_DFR1_EL1,
+  ID_ISAR6_EL1,
+  ID_MMFR5_EL1,
+  ID_PFR2_EL1
 } BSA_ACS_PE_REGS;
+
+uint64_t ArmReadAfr0(void);
+
+uint64_t ArmReadDfr1(void);
+
+uint64_t ArmReadIsar6(void);
+
+uint64_t ArmReadMmfr5(void);
+
+uint64_t ArmReadPfr2(void);
+
+uint64_t ArmReadIdPfr0(void);
+
+uint64_t AA64ReadTrcdevid(void);
+
+uint64_t AA64ReadTrctraceidr(void);
+
+uint64_t AA64ReadCptrEL3(void);
+
+uint64_t AA64ReadAmcg1idr(void);
+
+uint64_t AA64ReadGmid(void);
+
+uint64_t AA64ReadMpamidr(void);
+
+uint64_t AA64ReadSpmiidr(void);
+
+uint64_t AA64ReadMecidr(void);
+
+uint64_t AA64ReadVmecida(void);
+
+uint64_t AA64ReadVmecidp(void);
 
 uint64_t ArmReadMpidr(void);
 
@@ -391,9 +462,61 @@ uint64_t AA64ReadVtcr(void);
 
 uint64_t AA64ReadTrcidr0(void);
 
+uint64_t AA64ReadTrcidr1(void);
+
+uint64_t AA64ReadTrcidr2(void);
+
+uint64_t AA64ReadTrcidr3(void);
+
 uint64_t AA64ReadTrcidr4(void);
 
 uint64_t AA64ReadTrcidr5(void);
+
+uint64_t AA64ReadTrcidr6(void);
+
+uint64_t AA64ReadTrcidr7(void);
+
+uint64_t AA64ReadTrcidr8(void);
+
+uint64_t AA64ReadTrcidr9(void);
+
+uint64_t AA64ReadTrcidr10(void);
+
+uint64_t AA64ReadTrcidr11(void);
+
+uint64_t AA64ReadTrcidr12(void);
+
+uint64_t AA64ReadTrcidr13(void);
+
+uint64_t AA64ReadAfr0(void);
+
+uint64_t AA64ReadAfr1(void);
+
+uint64_t AA64ReadDfr2(void);
+
+uint64_t AA64ReadFpfr0(void);
+
+uint64_t AA64ReadIsar3(void);
+
+uint64_t AA64ReadMmfr3(void);
+
+uint64_t AA64ReadMmfr4(void);
+
+uint64_t  AA64ReadPfr2(void);
+
+uint64_t AA64ReadAidr(void);
+
+uint64_t AA64ReadDczid(void);
+
+uint64_t AA64ReadRevidr(void);
+
+uint64_t AA64ReadSmfr0(void);
+
+uint64_t AA64ReadCpacr(void);
+
+uint64_t AA64ReadCptrEL2(void);
+
+uint64_t AA64ReadSmidr(void);
 
 void ArmCallWFI(void);
 

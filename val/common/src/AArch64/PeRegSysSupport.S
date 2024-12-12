@@ -154,6 +154,47 @@ GCC_ASM_EXPORT (AA64DisableTFO)
 GCC_ASM_EXPORT (AA64ReadTrblimitr1)
 GCC_ASM_EXPORT (AA64WriteTrblimitr1)
 
+GCC_ASM_EXPORT (AA64ReadAfr0)
+GCC_ASM_EXPORT (AA64ReadAfr1)
+GCC_ASM_EXPORT (AA64ReadDfr2)
+GCC_ASM_EXPORT (AA64ReadFpfr0)
+GCC_ASM_EXPORT (AA64ReadIsar3)
+GCC_ASM_EXPORT (AA64ReadMmfr3)
+GCC_ASM_EXPORT (AA64ReadMmfr4)
+GCC_ASM_EXPORT (AA64ReadPfr2)
+GCC_ASM_EXPORT (AA64ReadAidr)
+GCC_ASM_EXPORT (AA64ReadDczid)
+GCC_ASM_EXPORT (AA64ReadRevidr)
+GCC_ASM_EXPORT (AA64ReadSmfr0)
+GCC_ASM_EXPORT (AA64ReadCptrEL2)
+GCC_ASM_EXPORT (AA64ReadZfr0)
+GCC_ASM_EXPORT (AA64ReadSmidr)
+GCC_ASM_EXPORT (AA64ReadAmcg1idr)
+GCC_ASM_EXPORT (AA64ReadGmid)
+GCC_ASM_EXPORT (AA64ReadMpamidr)
+GCC_ASM_EXPORT (AA64ReadSpmiidr)
+GCC_ASM_EXPORT (AA64ReadMecidr)
+GCC_ASM_EXPORT (AA64ReadVmecida)
+GCC_ASM_EXPORT (AA64ReadVmecidp)
+GCC_ASM_EXPORT (AA64ReadTrcdevid)
+GCC_ASM_EXPORT (AA64ReadTrctraceidr)
+GCC_ASM_EXPORT (AA64ReadTrcidr1)
+GCC_ASM_EXPORT (AA64ReadTrcidr2)
+GCC_ASM_EXPORT (AA64ReadTrcidr3)
+GCC_ASM_EXPORT (AA64ReadTrcidr6)
+GCC_ASM_EXPORT (AA64ReadTrcidr7)
+GCC_ASM_EXPORT (AA64ReadTrcidr8)
+GCC_ASM_EXPORT (AA64ReadTrcidr9)
+GCC_ASM_EXPORT (AA64ReadTrcidr10)
+GCC_ASM_EXPORT (AA64ReadTrcidr11)
+GCC_ASM_EXPORT (AA64ReadTrcidr12)
+GCC_ASM_EXPORT (AA64ReadTrcidr13)
+GCC_ASM_EXPORT (ArmReadAfr0)
+GCC_ASM_EXPORT (ArmReadDfr1)
+GCC_ASM_EXPORT (ArmReadIsar6)
+GCC_ASM_EXPORT (ArmReadMmfr5)
+GCC_ASM_EXPORT (ArmReadPfr2)
+
 ASM_PFX(ArmReadMpidr):
   mrs   x0, mpidr_el1           // read EL1 MPIDR
   ret
@@ -728,4 +769,161 @@ ASM_PFX(AA64DisableETETrace):
 
 ASM_PFX(AA64ReadTrbPtrEl1):
   mrs   x0, TRBPTR_EL1
+  ret
+
+
+ASM_PFX(AA64ReadDfr2):
+  mrs   x0, S3_0_C0_C5_2   //Read ID_AA64DFR2_EL1 Register
+  ret
+
+ASM_PFX(AA64ReadFpfr0):
+  mrs   x0, S3_0_C0_C4_7   //Read ID_AA64FPFR0_EL1 Register
+  ret
+
+ASM_PFX(AA64ReadIsar3):
+  mrs   x0, S3_0_C0_C6_3   //Read ID_AA64ISAR3_EL1 Register
+  ret
+
+ASM_PFX(AA64ReadMmfr3):
+  mrs   x0, S3_0_C0_C7_3   //Read ID_AA64MMFR3_EL1 Register
+  ret
+
+ASM_PFX(AA64ReadMmfr4):
+  mrs   x0, S3_0_C0_C7_4   //Read ID_AA64MMFR4_EL1 Register
+  ret
+
+ASM_PFX(AA64ReadPfr2):
+  mrs   x0, S3_0_C0_C4_2   //Read ID_AA64PFR2_EL1 Register
+  ret
+
+ASM_PFX(AA64ReadSpmiidr):
+  mrs   x0, S2_0_C9_C13_4   // Read SPMIIDR_EL1 Register
+  ret
+
+ASM_PFX(AA64ReadGmid):
+  mrs   x0, S3_1_C0_C0_4   // Read GMID_EL1 Register
+  ret
+
+ASM_PFX(AA64ReadAmcg1idr):
+  mrs   x0, S3_3_C13_C2_6   // Read AMCG1IDR_El0 Register
+  ret
+
+ASM_PFX(AA64ReadSmidr):
+  mrs   x0, S3_1_C0_C0_6   // Read SMIDR_EL1 Register
+  ret
+
+ASM_PFX(AA64ReadSmfr0):
+  mrs   x0, S3_0_C0_C4_5   // Read ID_AA64SMFR0_EL1 Register
+  ret
+
+ASM_PFX(ArmReadPfr2):
+  mrs   x0, S3_0_C0_C3_4   //Read ID_PDR2_EL1 Register
+  ret
+
+ASM_PFX(AA64ReadAidr):
+  mrs   x0, aidr_el1
+  ret
+
+ASM_PFX(AA64ReadDczid):
+  mrs   x0, dczid_el0   //Read DCZID_EL0 Register
+  ret
+
+ASM_PFX(AA64ReadAfr1):     //Always RES0 Value
+  mrs   x0, id_aa64afr1_el1
+  ret
+
+ASM_PFX(AA64ReadRevidr):
+  mrs   x0, revidr_el1
+  ret
+
+ASM_PFX(AA64ReadAfr0):
+  mrs   x0, id_aa64afr0_el1
+  ret
+
+ASM_PFX(ArmReadAfr0):
+  mrs   x0, id_afr0_el1
+  ret
+
+ASM_PFX(ArmReadDfr1):
+  mrs   x0, id_dfr1_el1
+  ret
+
+ASM_PFX(ArmReadIsar6):
+  mrs   x0, id_isar6_el1
+  ret
+
+ASM_PFX(ArmReadMmfr5):
+  mrs   x0, id_mmfr5_el1
+  ret
+
+ASM_PFX(AA64ReadTrcidr1):
+  mrs x0, trcidr1
+  ret
+
+ASM_PFX(AA64ReadTrcidr2):
+  mrs x0, trcidr2
+  ret
+
+ASM_PFX(AA64ReadTrcidr3):
+  mrs x0, trcidr3
+  ret
+
+ASM_PFX(AA64ReadTrcidr6):
+  mrs x0, trcidr6
+  ret
+
+ASM_PFX(AA64ReadTrcidr7):
+  mrs x0, trcidr7
+  ret
+
+ASM_PFX(AA64ReadTrcidr8):
+  mrs x0, trcidr8
+  ret
+
+ASM_PFX(AA64ReadTrcidr9):
+  mrs x0, trcidr9
+  ret
+
+ASM_PFX(AA64ReadTrcidr10):
+  mrs x0, trcidr10
+  ret
+
+ASM_PFX(AA64ReadTrcidr11):
+  mrs x0, trcidr11
+  ret
+
+ASM_PFX(AA64ReadTrcidr12):
+  mrs x0, trcidr12
+  ret
+
+ASM_PFX(AA64ReadTrcidr13):
+  mrs x0, trcidr13
+  ret
+
+ASM_PFX(AA64ReadTrcdevid):
+  mrs   x0, trcdevid
+  ret
+
+ASM_PFX(AA64ReadTrctraceidr):
+  mrs   x0, trctraceidr
+  ret
+
+ASM_PFX(AA64ReadVmecidp):
+  mrs   x0, vmecid_p_el2
+  ret
+
+ASM_PFX(AA64ReadVmecida):
+  mrs   x0, vmecid_a_el2
+  ret
+
+ASM_PFX(AA64ReadMecidr):
+  mrs   x0, mecidr_el2
+  ret
+
+ASM_PFX(AA64ReadMpamidr):
+  mrs   x0, mpamidr_el1
+  ret
+
+ASM_PFX(AA64ReadCptrEL2):
+  mrs   x0, cptr_el2
   ret
