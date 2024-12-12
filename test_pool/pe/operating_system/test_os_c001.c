@@ -23,13 +23,23 @@
 #define TEST_RULE  "B_PE_01"
 #define TEST_DESC  "Check Arch symmetry across PE         "
 
-#define NUM_OF_REGISTERS  37
+#define NUM_OF_REGISTERS  86
 
 #define RAS               1
 #define SPE               2
 #define LOR               3
 #define AA32              4
 #define PMUV3             5
+#define SME               6
+#define AMUv1p1           7
+#define BRBE              8
+#define MTE2              9
+#define MPAM             10
+#define SPMU             11
+#define TRBE             12
+#define MEC              13
+#define ETE              14
+
 
 #define MASK_AA64MMFR0    0xF
 #define MASK_MIDR         0x00F0FFFF
@@ -95,13 +105,62 @@ reg_details reg_list[] = {
     {ID_PFR1_EL1,      0x0,            "ID_PFR1_EL1     ", AA32},
     {MVFR0_EL1,        0x0,            "MVFR0_EL1       ", AA32},
     {MVFR1_EL1,        0x0,            "MVFR1_EL1       ", AA32},
-    {MVFR2_EL1,        0x0,            "MVFR2_EL1       ", AA32}
+    {MVFR2_EL1,        0x0,            "MVFR2_EL1       ", AA32},
+    {ID_AA64AFR0_EL1,  0x0,            "ID_AA64AFR0_EL1 ", 0x0 },
+    {ID_AA64AFR1_EL1,  0x0,            "ID_AA64AFR1_EL1 ", 0x0 },
+    {ID_AA64DFR2_EL1,  0x0,            "ID_AA64DFR2_EL1 ", 0x0 },
+    {ID_AA64FPFR0_EL1, 0x0,            "ID_AA64FPFR0_EL1", 0x0 },
+    {ID_AA64ISAR2_EL1, 0x0,            "ID_AA64ISAR2_EL1", 0x0 },
+    {ID_AA64ISAR3_EL1, 0x0,            "ID_AA64ISAR3_EL1", 0x0 },
+    {ID_AA64MMFR3_EL1, 0x0,            "ID_AA64MMFR3_EL1", 0x0 },
+    {ID_AA64MMFR4_EL1, 0x0,            "ID_AA64MMFR4_EL1", 0x0 },
+    {ID_AA64PFR2_EL1,  0x0,            "ID_AA64PFR2_EL1 ", 0x0 },
+    {AIDR_EL1,         0x0,            "AIDR_EL1        ", 0x0 },
+    {CLIDR_EL1,        0x0,            "CLIDR_EL1       ", 0x0 },
+    {DCZID_EL0,        0x0,            "DCZID_EL0       ", 0x0 },
+    {REVIDR_EL1,       0x0,            "REVIDR_EL1      ", 0x0 },
+    {VMPIDR_EL2,       0x0,            "VMPIDR_EL2      ", 0x0 },
+    {VPIDR_EL2,        0x0,            "VPIDR_EL2       ", 0x0 },
+    {ID_AA64SMFR0_EL1, 0x0,            "ID_AA64SMFR0_EL1", 0x0 },
+    {CPTR_EL2,         0x0,            "CPTR_EL2        ", 0x0 },
+    {ID_AA64ZFR0_EL1,  0x0,            "ID_AA64ZFR0_EL1 ", SME },
+    {SMIDR_EL1,        0x0,            "SMIDR_EL1       ", SME },
+    {AMCG1IDR_EL0,     0x0,            "AMCG1IDR_EL0    ", AMUv1p1},
+    {BRBIDR0_EL1,      0x0,            "BRBIDR0_EL1     ", BRBE},
+    {GMID_EL1,         0x0,            "GMID_EL1        ", MTE2},
+    {MPAMIDR_EL1,      0x0,            "MPAMIDR_EL1     ", MPAM},
+    {SPMIIDR_EL1,      0x0,            "SPMIIDR_EL1     ", SPMU},
+    {TRBIDR_EL1,       0x0,            "TRBIDR_EL1      ", TRBE},
+    {MECIDR_EL2,       0x0,            "MECIDR_EL2      ", MEC },
+    {VMECID_A_EL2,     0x0,            "VMECID_A_EL2    ", MEC },
+    {VMECID_P_EL2,     0x0,            "VMECID_P_EL2    ", MEC },
+    {TRCDEVID,         0x0,            "TRCDEVID        ", ETE },
+    {TRCTRACEIDR,      0x0,            "TRCTRACEIDR     ", ETE },
+    {TRCIDR0,          0x0,            "TRCIDR0         ", ETE },
+    {TRCIDR1,          0x0,            "TRCIDR1         ", ETE },
+    {TRCIDR2,          0x0,            "TRCIDR2         ", ETE },
+    {TRCIDR3,          0x0,            "TRCIDR3         ", ETE },
+    {TRCIDR4,          0x0,            "TRCIDR4         ", ETE },
+    {TRCIDR5,          0x0,            "TRCIDR5         ", ETE },
+    {TRCIDR6,          0x0,            "TRCIDR6         ", ETE },
+    {TRCIDR7,          0x0,            "TRCIDR7         ", ETE },
+    {TRCIDR8,          0x0,            "TRCIDR8         ", ETE },
+    {TRCIDR9,          0x0,            "TRCIDR9         ", ETE },
+    {TRCIDR10,         0x0,            "TRCIDR10        ", ETE },
+    {TRCIDR11,         0x0,            "TRCIDR11        ", ETE },
+    {TRCIDR12,         0x0,            "TRCIDR12        ", ETE },
+    {TRCIDR13,         0x0,            "TRCIDR13        ", ETE },
+    {ID_DFR1_EL1,      0x0,            "ID_DFR1_EL1     ", AA32},
+    {ID_MMFR5_EL1,     0x0,            "ID_MMFR5_EL1    ", AA32},
+    {ID_ISAR6_EL1,     0x0,            "ID_ISAR6_EL1    ", AA32},
+    {ID_PFR2_EL1,      0x0,            "ID_PFR2_EL1     ", AA32},
+    {ID_AFR0_EL1,      0x0,            "ID_AFR0_EL1     ", AA32}
 };
 
 uint64_t
 return_reg_value(uint32_t reg, uint8_t dependency)
 {
-  uint64_t temp=0;
+  uint64_t temp = 0, temp2 = 0;
 
   if(dependency == 0)
       return val_pe_reg_read(reg);
@@ -153,6 +212,97 @@ return_reg_value(uint32_t reg, uint8_t dependency)
             return 0;
         break;
 
+    case SME: //If SME is not supported, then skip register check
+        temp = val_pe_reg_read(ID_AA64PFR1_EL1);
+        temp = (temp >> 24) & 0xf;
+        if (temp != 0)
+            return val_pe_reg_read(reg);
+        else if (reg == ID_AA64ZFR0_EL1) {
+            // Check SVE support also for ID_AA64ZFR0_EL1 register along with SME
+            temp = val_pe_reg_read(ID_AA64PFR0_EL1);
+            temp = (temp >> 32) & 0xf;
+            if (temp == 1)
+                return val_pe_reg_read(reg);
+            else
+                return 0;
+            }
+        else
+            return 0;
+
+    case AMUv1p1: // If AMUv1p1 is not supported, then skip register check
+        temp = val_pe_reg_read(ID_AA64PFR0_EL1);
+        temp = (temp >> 44) & 0xf;
+        if (temp == 2)
+            return val_pe_reg_read(reg);
+        else
+            return 0;
+        break;
+
+    case BRBE: // If BRBE is not supported, then skip register check
+        temp = val_pe_reg_read(ID_AA64DFR0_EL1);
+        temp = (temp >> 52) & 0xf;
+        if (temp != 0)
+            return val_pe_reg_read(reg);
+        else
+            return 0;
+        break;
+
+    case MTE2: // If MTE2 is not supported, then skip register check
+        temp = val_pe_reg_read(ID_AA64PFR1_EL1);
+        temp = (temp >> 8) & 0xf;
+        if (temp >= 2)
+            return val_pe_reg_read(reg);
+        else
+            return 0;
+        break;
+
+    case MPAM: // If MPAM is not supported, then skip register check
+
+        temp = val_pe_reg_read(ID_AA64PFR0_EL1);   //Check MPAM major version
+        temp = (temp >> 40) & 0xf;
+        temp2 = val_pe_reg_read(ID_AA64PFR1_EL1);  //Check MPAM minor version eg:v0.1
+        temp2 = (temp2 >> 16) & 0xf;
+        if (temp == 1 || temp2 >= 1)
+            return val_pe_reg_read(reg);
+        else
+            return 0;
+        break;
+
+    case SPMU: // If SPMU is not supported, then skip register check
+        temp = val_pe_reg_read(ID_AA64DFR1_EL1);
+        temp = (temp >> 32) & 0xf;
+        if (temp != 0)
+            return val_pe_reg_read(reg);
+        else
+            return 0;
+        break;
+
+    case TRBE: // If TRBE is not supported, then skip register check
+        temp = val_pe_reg_read(ID_AA64DFR0_EL1);
+        temp = (temp >> 44) & 0xf;
+        if (temp >= 1)
+            return val_pe_reg_read(reg);
+        else
+            return 0;
+        break;
+
+    case MEC: // If MEC is not supported, then skip register check
+        temp = val_pe_reg_read(ID_AA64MMFR3_EL1);
+        temp = (temp >> 28) & 0xf;
+        if (temp == 1)
+            return val_pe_reg_read(reg);
+        else
+            return 0;
+        break;
+
+    case ETE: // If ETE is not supported, then skip register check
+        temp = val_pe_reg_read(ID_AA64DFR0_EL1);
+        temp = (temp >> 4) & 0xf;
+        if (temp == 1)
+            return val_pe_reg_read(reg);
+        else
+            return 0;
+        break;
     default:
         val_print(ACS_PRINT_ERR, "\n Unknown dependency = %d ", dependency);
         return 0x0;
@@ -172,7 +322,6 @@ id_regs_check(void)
   /* Loop CLIDR to check if a cache level is implemented before comparing */
   val_get_test_data(index, &addr, &buffer_ptr);
   secondary_buffer = (pe_reg_info *)buffer_ptr;
-  secondary_buffer = secondary_buffer + index;
 
   while (i < MAX_CACHE_LEVEL) {
       reg_read_data = val_pe_reg_read(CLIDR_EL1);
@@ -214,7 +363,7 @@ id_regs_check(void)
   }
 
   if (check == 1)
-      val_set_status(index, RESULT_FAIL(TEST_NUM, 2));
+      val_set_status(index, RESULT_FAIL(TEST_NUM, 3));
   else
       val_set_status(index, RESULT_PASS(TEST_NUM, 1));
 
@@ -232,6 +381,7 @@ payload(uint32_t num_pe)
   uint64_t total_fail = 0;
   uint64_t reg_fail = 0;
   uint64_t cache_fail = 0;
+  uint64_t *midr_array;
   volatile pe_reg_info *pe_buffer;
 
   if (num_pe == 1) {
@@ -271,66 +421,40 @@ payload(uint32_t num_pe)
       val_data_cache_ops_by_va((addr_t)(rd_data_array + i), CLEAN_AND_INVALIDATE);
   }
 
-  /* Allocate memory to save all PE register read values and status of reg value
-     comparision pass and fail */
-  g_pe_reg_info = (pe_reg_info *) val_memory_calloc(num_pe, sizeof(pe_reg_info));
-
-  if (g_pe_reg_info == NULL) {
-      val_print(ACS_PRINT_ERR, "\n       Allocation for secondary PE Registers Failed \n", 0);
+  midr_array = (uint64_t *) val_memory_calloc(num_pe, sizeof(uint64_t));
+  if (midr_array == NULL) {
+      val_print(ACS_PRINT_ERR, "\n       Allocation for All PE MIDR Registers Failed\n", 0);
       val_set_status(my_index, RESULT_FAIL(TEST_NUM, 1));
       return;
-  }
+   }
+  midr_array[my_index] = rd_data_array[1];
 
   for (i = 0; i < num_pe; i++) {
       if (i != my_index) {
           timeout = TIMEOUT_LARGE;
+          g_pe_reg_info = NULL;
+
+          /* Allocate memory to save all PE register read values and status of reg value
+             comparision pass and fail */
+          g_pe_reg_info = (pe_reg_info *) val_memory_calloc(1, sizeof(pe_reg_info));
+          if (g_pe_reg_info == NULL) {
+              val_print(ACS_PRINT_ERR, "\n       Allocating memory for secondary"
+                                                           " PE - %d Failed\n", i);
+              val_set_status(my_index, RESULT_FAIL(TEST_NUM, 2));
+              return;
+          }
+
           val_execute_on_pe(i, id_regs_check, (uint64_t)g_pe_reg_info);
           while ((--timeout) && (IS_RESULT_PENDING(val_get_status(i))));
 
           if(timeout == 0) {
               val_print(ACS_PRINT_ERR, "\n       **Timed out** for PE index = %d", i);
-              val_set_status(i, RESULT_FAIL(TEST_NUM, 3));
+              val_set_status(i, RESULT_FAIL(TEST_NUM, 4));
               return;
           }
-      }
-  }
 
-  val_print(ACS_PRINT_TEST, "\n       Primary PE Index    : %d", my_index);
-  val_print(ACS_PRINT_TEST, "\n       Primary PE MIDR_EL1 : 0x%08llx", rd_data_array[1]);
-
-  for (i = 0; i < num_pe; i++) {
-      uint32_t unique = 1;
-      if (i != my_index) {
-          pe_buffer = g_pe_reg_info + i;
-          for (j = 0; j < i; j++) {
-              pe_reg_info *pe_buffer_midr = g_pe_reg_info + j;
-              if (pe_buffer->reg_data[1] == pe_buffer_midr->reg_data[1]) {
-                  unique = 0;
-                  break;
-              }
-          }
-          if (unique == 1 && rd_data_array[1] != pe_buffer->reg_data[1]) {
-              if (t == 0) {
-                  val_print(ACS_PRINT_TEST, "\n       Other Cores         : 0x%08llx      ",
-                                                                        pe_buffer->reg_data[1]);
-                  t = 1;
-              } else {
-                  val_print(ACS_PRINT_TEST, "\n                             0x%08llx      ",
-                                                                        pe_buffer->reg_data[1]);
-                }
-           }
-      }
-  }
-
-  if (t == 0) {
-      val_print(ACS_PRINT_TEST, "\n       Other Cores         : Identical       ", 0);
-  }
-
-  pe_buffer = NULL;
-
-  for (i = 0; i < num_pe; i++) {
-      if (i != my_index) {
-          pe_buffer = g_pe_reg_info + i;
+          pe_buffer = NULL;
+          pe_buffer = g_pe_reg_info;
 
           for (int cache_index = 0; cache_index < MAX_CACHE_LEVEL; cache_index++) {
              if (!(pe_buffer->cache_status[cache_index]) &&
@@ -354,32 +478,33 @@ payload(uint32_t num_pe)
                    cache_fail = cache_fail + 1;
              }
           }
+          midr_array[i] = pe_buffer->reg_data[1];
 
           for (int reg_index = 1; reg_index < NUM_OF_REGISTERS; reg_index++) {
              if (!(pe_buffer->reg_status[reg_index])) {
                  val_print(ACS_PRINT_INFO, "\n        PE Index: %d, ", i);
                  val_print(ACS_PRINT_INFO, reg_list[reg_index].reg_desc, 0);
                  if (reg_list[reg_index].dependency == AA32)
-                     val_print(ACS_PRINT_INFO, "  : 0x%08llx", pe_buffer->reg_data[reg_index]);
+                    val_print(ACS_PRINT_INFO, "  : 0x%08llx", pe_buffer->reg_data[reg_index]);
                  else
-                     val_print(ACS_PRINT_INFO, "  : 0x%016llx", pe_buffer->reg_data[reg_index]);
+                    val_print(ACS_PRINT_INFO, "  : 0x%016llx", pe_buffer->reg_data[reg_index]);
              } else  {
                  val_print(ACS_PRINT_ERR, "\n        PE Index: %d, ", i);
                  val_print(ACS_PRINT_ERR, reg_list[reg_index].reg_desc, 0);
                  if (reg_list[reg_index].dependency == AA32) {
-                     val_print(ACS_PRINT_ERR, "   : 0x%08llx    FAIL\n",
+                     val_print(ACS_PRINT_ERR, "  : 0x%08llx    FAIL\n",
                                                         pe_buffer->reg_data[reg_index]);
                      val_print(ACS_PRINT_ERR, "          Masked Primary PE Value : 0x%08llx \n",
-                                              rd_data_array[reg_index] & (~reg_list[i].reg_mask));
+                                       rd_data_array[reg_index] & (~reg_list[reg_index].reg_mask));
                      val_print(ACS_PRINT_ERR, "          Masked Current PE Value : 0x%08llx ",
-                                         pe_buffer->reg_data[reg_index] & (~reg_list[i].reg_mask));
+                                 pe_buffer->reg_data[reg_index] & (~reg_list[reg_index].reg_mask));
                  } else {
-                     val_print(ACS_PRINT_ERR, "   : 0x%016llx    FAIL\n",
+                     val_print(ACS_PRINT_ERR, "  : 0x%016llx    FAIL\n",
                                                         pe_buffer->reg_data[reg_index]);
                      val_print(ACS_PRINT_ERR, "          Masked Primary PE Value : 0x%016llx \n",
-                                              rd_data_array[reg_index] & (~reg_list[i].reg_mask));
+                                       rd_data_array[reg_index] & (~reg_list[reg_index].reg_mask));
                      val_print(ACS_PRINT_ERR, "          Masked Current PE Value : 0x%016llx ",
-                                         pe_buffer->reg_data[reg_index] & (~reg_list[i].reg_mask));
+                                 pe_buffer->reg_data[reg_index] & (~reg_list[reg_index].reg_mask));
                    }
                  reg_fail = reg_fail + 1;
              }
@@ -387,19 +512,49 @@ payload(uint32_t num_pe)
           total_fail = total_fail + reg_fail + cache_fail;
           reg_fail = 0;
           cache_fail = 0;
+          val_memory_free((void *) g_pe_reg_info);
       }
   }
+
+  val_print(ACS_PRINT_TEST, "\n       Primary PE Index    : %d", my_index);
+  val_print(ACS_PRINT_TEST, "\n       Primary PE MIDR_EL1 : 0x%08llx", rd_data_array[1]);
+
+  for (i = 0; i < num_pe; i++) {
+      uint32_t unique = 1;
+
+      if (i != my_index) {
+          for (j = 0; j < i; j++) {
+              if (midr_array[i] == midr_array[j]) {
+                  unique = 0;
+                  break;
+              }
+          }
+          if (unique == 1 && rd_data_array[1] != midr_array[i]) {
+              if (t == 0) {
+                  val_print(ACS_PRINT_TEST, "\n       Other Cores         : 0x%08llx      ",
+                                                                        midr_array[i]);
+                  t = 1;
+              } else {
+                  val_print(ACS_PRINT_TEST, "\n                             0x%08llx      ",
+                                                                        midr_array[i]);
+                }
+          }
+      }
+  }
+
+  if (t == 0)
+      val_print(ACS_PRINT_TEST, "\n       Other Cores         : Identical       ", 0);
 
   if (total_fail) {
       val_print(ACS_PRINT_ERR, "\n\n    Total Register and cache fail for all PE: %d \n",
                                                                              total_fail);
-      val_set_status(total_fail, RESULT_FAIL(TEST_NUM, 4));
+      val_set_status(total_fail, RESULT_FAIL(TEST_NUM, 5));
   }
   else
       val_set_status(1, RESULT_PASS(TEST_NUM, 2));
 
-  val_memory_free((void *) g_pe_reg_info);
-  return;
+ val_memory_free((void *) midr_array);
+ return;
 }
 
 uint32_t
