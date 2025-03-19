@@ -28,6 +28,10 @@
 #define G_SW_HYP           1
 #define G_SW_PS            2
 
+#define BSA_MIN_LEVEL_SUPPORTED 1
+#define BSA_MAX_LEVEL_SUPPORTED 1
+
+
 #include "bsa_drv_intf.h"
 
 typedef unsigned long int addr_t;
